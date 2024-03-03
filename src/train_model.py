@@ -48,4 +48,4 @@ regressor = RandomForestRegressor(n_estimators=20, random_state=0, oob_score=Tru
 
 regressor.fit(X, y)
 
-joblib.dump(regressor, os.getcwd()+'/model/random_forest_regressor_model.pkl')
+joblib.dump(regressor, os.getcwd()+'/rf_model/random_forest_regressor_model.pkl')
