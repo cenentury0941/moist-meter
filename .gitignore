@@ -142,7 +142,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-/data/extracted/
-/data/processed_data.csv
-/model/random_forest_regressor_model.pkl
-/data/archive.zip
