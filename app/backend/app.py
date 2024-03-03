@@ -39,6 +39,9 @@
 # ###########################################################################
 
 import argparse
+
+import joblib
+import numpy as np
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS, cross_origin
 import logging
@@ -67,9 +70,19 @@ def predict():
         lat = float(request.args.get("lat"))
         long = float(request.args.get("long"))
 
-        result_value = state_resolver.resolveState(lat, long)
+        state_value = state_resolver.resolveState(lat, long)
+        result = {"result": "Success"}
 
-        result = {"result": result_value}
+        if state_value == None:
+            result = {"result": "Error"}
+            return jsonify(result)
+        else:
+            loaded_regressor = joblib.load(os.getcwd()+'/rf_model/random_forest_regressor_model.pkl')
+
+            for i in range(1,13):
+                pred = loaded_regressor.predict(np.array([state_value, 2020, i]).reshape(1, -1))
+                result[i] = pred.tolist()
+
         return jsonify(result)
 
     except Exception as e:
