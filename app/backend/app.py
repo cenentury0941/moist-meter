@@ -61,25 +61,19 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def hello():
     return render_template('index.html')
 
-@app.route('/predict', methods=["GET", "POST"])
+@app.route('/predict', methods=["GET"])
 def predict():
-    if request.method == "GET":
-        try:
-            data = request.get_json()
+    try:
+        lat = float(request.args.get("lat"))
+        long = float(request.args.get("long"))
 
-            lat = float(data.get("lat"))
-            long = float(data.get("long"))
+        result_value = state_resolver.resolveState(lat, long)
 
-            result_value = state_resolver(lat, long)
+        result = {"result": result_value}
+        return jsonify(result)
 
-            result = {"result": result_value}
-            return jsonify(result)
-
-        except Exception as e:
-            return jsonify({"error": f"An error occurred: {str(e)}"})
-    else:
-        return jsonify({"message": "Invalid request"})
-
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"})
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Application parameters')
