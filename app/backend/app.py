@@ -73,7 +73,7 @@ def predict():
         state_value = state_resolver.resolveState(lat, long)
         result = {"result": "Success"}
 
-        if state_value == None:
+        if state_value is None:
             result = {"result": "Error"}
             return jsonify(result)
         else:
