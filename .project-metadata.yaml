@@ -1,9 +1,9 @@
-name: Image Analysis
-description: Prototype to demonstrate semantic image search
-author: Cloudera Inc.
+name: MoistMeter
+description: ML Based Rainwater Harvesting Planner
+author: Cenentury0941
 specification_version: 1.0
 prototype_version: 2.0
-date: "2022-03-25"
+date: "2024-03-04"
 
 runtimes:
   - editor: Workbench
@@ -34,8 +34,8 @@ tasks:
 
   - type: start_application
     name: Application to serve UI
-    short_summary: Create an application to serve the image analysis UI
-    subdomain: imageanalysis
+    short_summary: Create an application to serve the UI
+    subdomain: moistmeter
     script: app/backend/app.py
     environment_variables:
       TASK_TYPE: START_APPLICATION
