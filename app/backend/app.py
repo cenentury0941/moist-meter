@@ -81,7 +81,7 @@ def predict():
 
             for i in range(1,13):
                 pred = loaded_regressor.predict(np.array([state_value, 2020, i]).reshape(1, -1))
-                result[i] = pred.tolist()
+                result[str(i)] = pred.tolist()
 
         return jsonify(result)
 
