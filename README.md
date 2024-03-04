@@ -1,30 +1,61 @@
-# Semantic Image Search with Convolutional Neural Networks
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/header.png" alt="drawing" width="700">
 
-This repo explores how convolutional neural network models (e.g. [EfficientNets](https://arxiv.org/abs/1905.11946)) can be applied to the task of semantic search. It provides scripts for feature extraction, semantic search (image retrieval) and a front end application for visualizing search query performance across two datasets. This repo builds on content from the [Fast Forward Labs Report](https://www.cloudera.com/products/fast-forward-labs-research/fast-forward-labs-research-reports.html) on Deep Learning for Image Analysis. For an extended treatment of convolutional neural networks and their application to a variety of tasks (e.g. image classification, object detection, image generation etc.), please consult the report!
+# MoistMeter - Sustainable Water Solutions
 
-![ConvNet Playground Screenshot](docs/screen.jpg)
+## Inspiration
 
-## Overview of Semantic Search
+The inspiration behind MoistMeter lies in the growing global water scarcity crisis. Millions are affected, and agriculture, a crucial societal backbone, is crumbling due to reduced water availability. This project aims to leverage technology to predict rainfall accurately and guide efficient rainwater harvesting, contributing to sustainable water solutions.
 
-To enable semantic search applications, a few prerequisites steps are helpful.
+## What it does
 
-- Extracting semantic representations: In this step, the goal is to construct numeric representations of data such that similar data items are numerically _similar_. In this project we use a pretrained convolutional neural network as a feature extractor for all items in the dataset.
-- Similarity Search: Given a new image (search query), this task focuses on identifying the k most similar items in the dataset. As the size of the dataset increases (think millions of datapoints), it becomes computationally slow to compare search queries with the entire dataset. To address this, a set of scalable approximate nearest neighbour algorithms have been propossed. In this project, we use the [methods](https://arxiv.org/abs/1702.08734) implemented in the [FAISS](https://github.com/facebookresearch/faiss) package.
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s06.png" alt="drawing" width="700">
+
+MoistMeter utilizes an Artificial Intelligence model, specifically a Random Forest Regression model, to predict rainfall with precision. The system analyzes historical weather data from over 2400 weather stations, dating back to 1971. It goes beyond prediction by integrating Natural Language Processing to provide smart suggestions. Visual representation through Google's Photorealistic 3D Tiles API enhances user understanding, making it a comprehensive tool for optimizing rainwater harvesting.
+
+## How I built it
+
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s08.png" alt="drawing" width="700">
+
+The foundation of MoistMeter is built on a dataset derived from the National Climatic Data Center's Archives, ensuring robust predictions. The implementation involves advanced algorithms for adaptive planning and Cloudera AutoML for convenient deployment and modification. The surplus calculation feature sets MoistMeter apart, allowing organizations to plan the distribution of surplus water from regions of high rainfall to drier areas.
+
+## Challenges I ran into
+
+Building MoistMeter presented several challenges, including optimizing the Random Forest Regression model for real-time predictions, integrating Natural Language Processing seamlessly, and ensuring a user-friendly visual representation of complex data. Addressing these challenges required a multidisciplinary approach, combining expertise in AI, data analytics, and visualization.
+
+## Accomplishments that I'm proud of
+
+Despite the challenges, the successful integration of the Random Forest Regression model, Natural Language Processing, and Google's Photorealistic 3D Tiles API is a significant accomplishment. The creation of an adaptable Cloudera AutoML project adds to the project's versatility, making it a valuable tool for addressing diverse water-related challenges.
+
+## What I learned
+
+The development of MoistMeter provided valuable insights into optimizing AI models for practical applications, the importance of interdisciplinary collaboration, and the potential of advanced technologies in addressing critical global issues. Learning to harness historical weather data for predictive analytics and creating a user-friendly interface were key takeaways.
+
+## What's next for MoistMeter
+
+The journey doesn't end here. The next steps for MoistMeter include continuous refinement of prediction models, expanding the dataset for global coverage, and incorporating user feedback to enhance the system's usability. Additionally, exploring partnerships with organizations and governments for widespread adoption and furthering the commitment to a sustainable future is on the agenda. MoistMeter is not just a project; it's a step towards empowering communities and ensuring every drop counts in the fight against water scarcity.
+
+------------------------------------------
+
+## Dataset
+
+### DATA SET 3260 (DSI-3260) 15 Minute Precipitation Data
+Provided by :
+National Climatic Data Center
+
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s07.png" alt="drawing" width="700">
 
 ## Instructions
 
-This repo provides scripts and examples that can help you get started with semantic search on your own dataset. The repo also provides a [tutorial](/notebooks/Semantic Image Search Tutorial.ipynb) notebook with visualizations that walks through the basics.
-Repo structure and brief description of content is provided below:
-
     ├── app
-    │   ├── backend      # flask app to serve search endpoint and web interface
+    │   ├── backend      # flask app to serve predict endpoint and web interface
     │   └── frontend     # code for front end app
-    ├── cml
-    │   └── create_index.py  # script to create a FAISS index from data
+    ├── src
+    │   └── download_data.py  # script to prepare data
+    │   └── train_model.py  # script to train Random Forest Regression Model
+    │   └── install_dependencies.py  # script to install dependencies
     ├── lib
-    │   ├── extractor.py     # return representations for images, given a model
-    │   ├── faissindex.py    # create, update, load, save a FAISS index + index id map
-    │   └── model.py         # load and run predictions from a pretrained model
+    │   ├── state_resolver.py     # regional access limitation to the US
+   
 
 The following scripts are recommended as a starting point:
 
@@ -34,38 +65,27 @@ The following scripts are recommended as a starting point:
 pip3 install -r requirements.txt
 ```
 
-This repo depends on a few libraries (e.g. Tensorflow 2.0) that need to be installed.
+This repo depends on a few libraries that need to be installed.
 
-### Create an index
+### Download Data
 
 ```shell
-python3 src/create_index.py
+python3 src/download_data.py
 ```
 
-This script scans a [data](app/frontend/build/assets/semsearch/datasets) directory for images, extracts features using a pretrained model ([EfficientNetsB0](https://arxiv.org/abs/1905.11946)) and adds each feature to an FAISS index which is then saved to disc.
+The data has already been archived on the repo for ease of access, this script mainly just extracts the data.
+
+### Train Model
+
+```shell
+python3 src/train_model.py
+```
+
+Train the Random Forest Regression Model on the data set and store the model in the rf_model folder for usage in the web application.
 
 ### Launch the frontend app
 
 ```shell
 python3 app/backend/app.py
 ```
-
-This script launches a web application with several sections.
-
-| Section                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | View                                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Search Visualization    | In implementing a semantic search system, the data scientist/ml engineer needs to make several decisions. What model architecture is suitable for semantic feature extraction? Do I use the entire model or an intermediate model? What distance metrics work best (e.g. cosine, euclidean?). This section visualizes the precomputed results of multiple experiments that explore these choices (2 datasets, 9 model architectures, 8 intermediate models, 2 distance metrics) and allows the user to build intuition on how they affect search performance. | ![ ConvNet Playground Embedding Screenshot ](docs/screen.jpg)     |
-| Embedding Visualization | One way to assess the suitability of representations methods with respect to the task of semantic search, is to visualize embeddings produced by the method. This section provides an interactive UMAP visualization of embeddings extracted from each image in two datasets across multiple model architecture choices.                                                                                                                                                                                                                                      | ![ ConvNet Playground Embedding Screenshot ](docs/embeddings.jpg) |
-| Live Search             | This section allows the user to perform live search using their own images (upload your own image or provide an image URL). It demonstrates how a feature extractor and approximate nearest neighbour search (FAISS) can be wrapped into a web endpoint to serve end user queries.                                                                                                                                                                                                                                                                            | ![ ConvNet Playground Embedding Screenshot ](docs/livesearch.jpg) |
-
-## Search on Your Own Data (At Scale)
-
-A good starting point in adapting this repo to your own data is to modify the index creating script - [cml/create_index.py](src/create_index.py). In this project, we build an index using a relatively [small dataset of 400 images](app/frontend/build/assets/semsearch/datasets) and use a dictionary persisted on disc to maintain a mapping between FAISS indices and image metadata (paths). With a larger dataset, a few changes are helpful:
-
-- **Explore additional models for feature extraction**: For this specific task, we can explore a set of pretrained CNN models (see [Tensorflow 2.0 architectures with pretrained weights](https://www.tensorflow.org/api_docs/python/tf/keras/applications/)). Hint: we can even construct submodels (with fewer parameters, lower latency) for feature extraction and better relevance for similarity.
-
-- **Parrallelized feature extraction pipeline**: Explore the use of tasks runners (e.g. Apache Airflow, Apache Beam) in designing a pipeline to i.) ingest images ii.) extract features iii.) Add each extracted feature to an FAISS. These can be run as scheduled batch jobs.
-
-- **DBMS**: Use a full fledged DBMS (SQL or NoSQL) for maintaining mapping between FAISS indices and image metadata. Given that mappings are light weight structured strings, and ACID compliant implementations might be required, an SQL based DBMS is preferrable.
-
-- **Distributed Index**: As data grows large, it becomes impractical to hold the entire index in memory. A straightforward approach to address this would be to use the [Distributed implementation of FAISS](https://github.com/facebookresearch/faiss/tree/master/benchs/distributed_ondisk). Optionally, a FAISS GPU implementation can be explored for improved index speed.
+This will launch a web application using a flask server
