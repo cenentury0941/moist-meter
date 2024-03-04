@@ -1,5 +1,3 @@
-<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/header.png" alt="drawing" width="700">
-
 ![](assets/header.png)
 
 # MoistMeter - Sustainable Water Solutions
@@ -10,13 +8,14 @@ The inspiration behind MoistMeter lies in the growing global water scarcity cris
 
 ## What it does
 
-<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s06.png" alt="drawing" width="700">
+![](assets/s06.png)
 
 MoistMeter utilizes an Artificial Intelligence model, specifically a Random Forest Regression model, to predict rainfall with precision. The system analyzes historical weather data from over 2400 weather stations, dating back to 1971. It goes beyond prediction by integrating Natural Language Processing to provide smart suggestions. Visual representation through Google's Photorealistic 3D Tiles API enhances user understanding, making it a comprehensive tool for optimizing rainwater harvesting.
 
 ## How I built it
 
-<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s08.png" alt="drawing" width="700">
+![](assets/s08.png)
+
 
 The foundation of MoistMeter is built on a dataset derived from the National Climatic Data Center's Archives, ensuring robust predictions. The implementation involves advanced algorithms for adaptive planning and Cloudera AutoML for convenient deployment and modification. The surplus calculation feature sets MoistMeter apart, allowing organizations to plan the distribution of surplus water from regions of high rainfall to drier areas.
 
@@ -44,7 +43,7 @@ The journey doesn't end here. The next steps for MoistMeter include continuous r
 Provided by :
 National Climatic Data Center
 
-<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s07.png" alt="drawing" width="700">
+![](assets/s07.png)
 
 ## Instructions
 
