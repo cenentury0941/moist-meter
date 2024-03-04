@@ -12,6 +12,8 @@ MoistMeter utilizes an Artificial Intelligence model, specifically a Random Fore
 
 ## How I built it
 
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s08.png" alt="drawing" width="700">
+
 The foundation of MoistMeter is built on a dataset derived from the National Climatic Data Center's Archives, ensuring robust predictions. The implementation involves advanced algorithms for adaptive planning and Cloudera AutoML for convenient deployment and modification. The surplus calculation feature sets MoistMeter apart, allowing organizations to plan the distribution of surplus water from regions of high rainfall to drier areas.
 
 ## Challenges I ran into
@@ -29,6 +31,16 @@ The development of MoistMeter provided valuable insights into optimizing AI mode
 ## What's next for MoistMeter
 
 The journey doesn't end here. The next steps for MoistMeter include continuous refinement of prediction models, expanding the dataset for global coverage, and incorporating user feedback to enhance the system's usability. Additionally, exploring partnerships with organizations and governments for widespread adoption and furthering the commitment to a sustainable future is on the agenda. MoistMeter is not just a project; it's a step towards empowering communities and ensuring every drop counts in the fight against water scarcity.
+
+------------------------------------------
+
+## Dataset
+
+### DATA SET 3260 (DSI-3260) 15 Minute Precipitation Data
+Provided by :
+National Climatic Data Center
+
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s07.png" alt="drawing" width="700">
 
 ## Instructions
 
