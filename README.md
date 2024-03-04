@@ -1,5 +1,5 @@
 <img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/header.png" alt="drawing" width="700">
-![](/assets/header.png)
+![](assets/header.png)
 
 # MoistMeter - Sustainable Water Solutions
 
