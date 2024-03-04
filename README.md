@@ -2,6 +2,8 @@
 
 # MoistMeter - Sustainable Water Solutions
 
+## Video : https://youtu.be/AXrH4vvKv8A
+
 ## Inspiration
 
 The inspiration behind MoistMeter lies in the growing global water scarcity crisis. Millions are affected, and agriculture, a crucial societal backbone, is crumbling due to reduced water availability. This project aims to leverage technology to predict rainfall accurately and guide efficient rainwater harvesting, contributing to sustainable water solutions.
