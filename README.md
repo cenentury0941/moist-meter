@@ -8,6 +8,8 @@ The inspiration behind MoistMeter lies in the growing global water scarcity cris
 
 ## What it does
 
+<img src="https://raw.githubusercontent.com/cenentury0941/Pictures/main/s06.png" alt="drawing" width="700">
+
 MoistMeter utilizes an Artificial Intelligence model, specifically a Random Forest Regression model, to predict rainfall with precision. The system analyzes historical weather data from over 2400 weather stations, dating back to 1971. It goes beyond prediction by integrating Natural Language Processing to provide smart suggestions. Visual representation through Google's Photorealistic 3D Tiles API enhances user understanding, making it a comprehensive tool for optimizing rainwater harvesting.
 
 ## How I built it
